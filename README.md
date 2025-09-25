@@ -42,18 +42,28 @@ Visit the live demo: [https://austinmorrissey.github.io/substack-to-instagram](h
 
 ## 🛠️ Customization
 
+### Quick Setup - Change Your Blog/Social Handle
+
+Find this line in `index.html` (around line 376):
+```javascript
+const authorHandle = "@yourusername"; // ← Edit this!
+```
+Change `@yourusername` to your blog name or social handle (e.g., `"austinpatrick.substack.com"` or `"@yourhandle"`).
+
+### Advanced Customization
+
 Want to customize colors, fonts, or branding? Edit these sections in `index.html`:
 
 ```javascript
-// Background gradient colors
+// Background gradient colors (lines ~455-457)
 gradient.addColorStop(0, '#fefcfb');
 gradient.addColorStop(0.5, '#fef9f5');
 gradient.addColorStop(1, '#fef6f0');
 
-// Font settings
+// Font settings (line ~495)
 ctx.font = `${fontSize}px Georgia, serif`;
 
-// Text color
+// Text color (line ~469)
 ctx.fillStyle = '#1f2937';
 ```
 

@@ -236,6 +236,12 @@ The tool will automatically split it into Instagram-friendly slides that are eas
                     </select>
                     <span class="char-count" id="charCount">0 characters</span>
                 </div>
+                <div class="controls" style="margin-top: 10px;">
+                    <input type="text" id="authorHandle" placeholder="Your blog/social handle"
+                           value="austinpatrick.substack.com"
+                           style="flex: 1; padding: 8px; border: 2px solid #e5e5e5; border-radius: 6px; font-size: 14px;">
+                    <button class="secondary-btn" onclick="saveHandle()" style="padding: 8px 16px;">Save</button>
+                </div>
                 <div class="status" id="status"></div>
 
                 <div class="info-box">
@@ -372,10 +378,13 @@ Share your writing with the world. Your unique perspective might be exactly what
             }
 
             // Format for slides - add footer to first slide only
+            // Get handle from input field or use default
+            const authorHandle = document.getElementById('authorHandle').value || "austinpatrick.substack.com";
+
             return chunks.map((content, index) => ({
                 id: index + 1,
                 content: content,
-                footer: index === 0 ? "@yourusername" : null
+                footer: index === 0 ? authorHandle : null
             }));
         }
 
@@ -619,6 +628,34 @@ Share your writing with the world. Your unique perspective might be exactly what
 
         // Initialize with empty preview
         renderSlide();
+
+        // Load saved handle on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedHandle = localStorage.getItem('authorHandle');
+            if (savedHandle) {
+                document.getElementById('authorHandle').value = savedHandle;
+            }
+        });
+
+        // Save handle to localStorage
+        function saveHandle() {
+            const handle = document.getElementById('authorHandle').value;
+            if (handle) {
+                localStorage.setItem('authorHandle', handle);
+                showStatus('Handle saved!', 'success');
+                // Regenerate slides if they exist
+                if (slides.length > 0) {
+                    generateSlides();
+                }
+            }
+        }
+
+        // Update handle when Enter is pressed in the input
+        document.getElementById('authorHandle').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                saveHandle();
+            }
+        });
     </script>
 </body>
 </html>
