@@ -13,7 +13,7 @@ Transform your long-form content into beautiful Instagram carousel images. Perfe
 ## 🚀 Quick Start
 
 ### Option 1: Use Online
-Visit the live demo: [https://austinmorrissey.github.io/substack-to-instagram](https://austinmorrissey.github.io/substack-to-instagram)
+Visit the live demo: [https://gvmfhy.github.io/substack-to-instagram](https://gvmfhy.github.io/substack-to-instagram)
 
 ### Option 2: Run Locally
 1. Download `index.html`
